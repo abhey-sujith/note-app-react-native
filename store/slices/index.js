@@ -3,6 +3,7 @@ import { persistReducer } from 'redux-persist';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import authSlice from './auth/authslice'
+import noteSlice from './note/noteslice'
 
 const authPersistConfig = {
   key: 'auth',
@@ -13,7 +14,7 @@ const authPersistConfig = {
 
 export const combinedReducers = combineReducers({
   auth: persistReducer(authPersistConfig, authSlice),
-  //   user: userReducer,
+  note: noteSlice,
 });
 
 export const initialState = {
@@ -25,5 +26,8 @@ export const initialState = {
     id:0,
     status: 'idle',
   },
-
+  note:{
+    notes:[],
+    status: 'idle',
+  }
 };
