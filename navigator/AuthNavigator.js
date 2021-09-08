@@ -12,6 +12,7 @@ const AuthStackNavigator = () => {
     headerStyle: {
       backgroundColor: '#252525',
     },
+    headerTitleAlign:'center',
     headerTintColor: '#fff',
     headerTitleStyle: {
       fontWeight: 'bold',
@@ -21,7 +22,8 @@ const AuthStackNavigator = () => {
     <Stack.Screen
       name="Register"
       component={Register}
-      options={{ title: 'Welcome' }}
+      
+      options={{ title: 'Note-app' }}
     />
     <Stack.Screen name="Login" component={Login} />
   </Stack.Navigator>

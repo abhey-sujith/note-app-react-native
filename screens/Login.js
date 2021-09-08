@@ -8,13 +8,13 @@ import { Constants } from 'expo';
 import { Button } from 'react-native-paper';
 import { Formik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { showMessage, hideMessage } from "react-native-flash-message";
 
 export const Login = ({ navigation }) => {
-    const EEEmail = useSelector((state) => state.auth.email)
     const dispatch = useDispatch()
     return (
         <View style={styles.container}>
-        <Text style={styles.title}>Login</Text>
+        <Text style={styles.title}> </Text>
         <Formik
           initialValues={{ email: '', password: ''}}
           validationSchema={Yup.object({
@@ -36,7 +36,15 @@ export const Login = ({ navigation }) => {
               .catch((rejectedValueOrSerializedError) => {
                 formikActions.setSubmitting(false);
                 console.log('rejectedValueOrSerializedError',rejectedValueOrSerializedError);
-
+                if(rejectedValueOrSerializedError){
+                  showMessage({
+                    message: rejectedValueOrSerializedError,
+                    type: "failed",
+                    backgroundColor: "red", // background color
+                    color: "#ffffff", // text color
+                  });
+                }
+                
               });
 
               // Important: Make sure to setSubmitting to false so our loading indicator
@@ -62,7 +70,7 @@ export const Login = ({ navigation }) => {
                 onChangeText={props.handleChange('password')}
                 onBlur={props.handleBlur('password')}
                 value={props.values.password}
-                autoFocus
+                // autoFocus
                 placeholder="Password"
                 style={styles.input}
                 onSubmitEditing={() => {
@@ -86,7 +94,7 @@ export const Login = ({ navigation }) => {
               </Button>
               <Button
                 onPress={props.handleReset}
-                color="black"
+                color="#81deeb"
                 mode="outlined"
                 disabled={props.isSubmitting}
                 style={{ marginTop: 16 }}>
@@ -96,11 +104,10 @@ export const Login = ({ navigation }) => {
           )}
         </Formik>
 
-        <Text>{EEEmail}</Text>
 
         <Button
                 onPress={()=>{navigation.navigate('Register')}}
-                color="blue"
+                color="#fecd80"
                 // mode="contained"
                 style={{ marginTop: 30 }}>
                 New User? Register...
@@ -113,7 +120,7 @@ export const Login = ({ navigation }) => {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#ecf0f1',
+      backgroundColor: '#252525',
       padding: 8,
     },
     title: {
@@ -131,10 +138,13 @@ export const Login = ({ navigation }) => {
     input: {
       height: 50,
       paddingHorizontal: 8,
+      marginVertical:10,
       width: '100%',
       borderColor: '#ddd',
       borderWidth: 1,
       backgroundColor: '#fff',
+      maxWidth:400,
+      alignSelf:'center'
     },
   });
   

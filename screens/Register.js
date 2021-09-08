@@ -8,9 +8,9 @@ import { Constants } from 'expo';
 import { Button } from 'react-native-paper';
 import { Formik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { showMessage, hideMessage } from "react-native-flash-message";
 
 export const Register = ({ navigation }) => {
-    const EEEmail = useSelector((state) => state.auth.email)
     const dispatch = useDispatch()
     return (
         <View style={styles.container}>
@@ -18,13 +18,13 @@ export const Register = ({ navigation }) => {
         <Formik
           initialValues={{ name: '', email: '', password: '', password_confirmation: '' }}
           validationSchema={Yup.object({
-            name: Yup.string()              
+            name: Yup.string().min(1).max(255).trim()              
               .required('Required'),
-            email: Yup.string()
+            email: Yup.string().trim()
               .email('Invalid Email')
               .required('Required'),
-              password: Yup.string().required("This field is required"),
-              password_confirmation: Yup.string().when("password", {
+              password: Yup.string().required("This field is required").min(6).max(255),
+              password_confirmation: Yup.string().min(6).when("password", {
                 is: val => (val && val.length > 0 ? true : false),
                 then: Yup.string().oneOf(
                   [Yup.ref("password")],
@@ -45,6 +45,21 @@ export const Register = ({ navigation }) => {
               .catch((rejectedValueOrSerializedError) => {
                 formikActions.setSubmitting(false);
                 console.log('rejectedValueOrSerializedError',rejectedValueOrSerializedError);
+                if(rejectedValueOrSerializedError.email[0]==="The email has already been taken."){
+                  showMessage({
+                    message: "The email has already been taken",
+                    type: "failed",
+                    backgroundColor: "red", // background color
+                    color: "#ffffff", // text color
+                  });
+                }else{
+                  showMessage({
+                    message: "Registration Failed",
+                    type: "failed",
+                    backgroundColor: "red", // background color
+                    color: "#ffffff", // text color
+                  });
+                }
 
               });
 
@@ -59,7 +74,7 @@ export const Register = ({ navigation }) => {
                 onChangeText={props.handleChange('name')}
                 onBlur={props.handleBlur('name')}
                 value={props.values.name}
-                autoFocus
+                // autoFocus
                 placeholder="Your Name"
                 style={styles.input}
                 onSubmitEditing={() => {
@@ -87,7 +102,7 @@ export const Register = ({ navigation }) => {
                 onChangeText={props.handleChange('password')}
                 onBlur={props.handleBlur('password')}
                 value={props.values.password}
-                autoFocus
+                // autoFocus
                 placeholder="Password"
                 style={styles.input}
                 onSubmitEditing={() => {
@@ -128,7 +143,7 @@ export const Register = ({ navigation }) => {
               </Button>
               <Button
                 onPress={props.handleReset}
-                color="black"
+                color="#81deeb"
                 mode="outlined"
                 disabled={props.isSubmitting}
                 style={{ marginTop: 16 }}>
@@ -138,10 +153,9 @@ export const Register = ({ navigation }) => {
           )}
         </Formik>
 
-        <Text>{EEEmail}</Text>
         <Button
                 onPress={()=>{navigation.navigate('Login')}}
-                color="blue"
+                color="#fecd80"
                 // mode="contained"
                 style={{ marginTop: 30 }}>
                 Already a User? Login...
@@ -155,14 +169,15 @@ export const Register = ({ navigation }) => {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#ecf0f1',
+      backgroundColor: '#252525',
       padding: 8,
     },
     title: {
       margin: 24,
-      fontSize: 24,
+      fontSize: 20,
       fontWeight: 'bold',
       textAlign: 'center',
+      color:'#ffffff'
     },
     error: {
       margin: 8,
@@ -173,10 +188,13 @@ export const Register = ({ navigation }) => {
     input: {
       height: 50,
       paddingHorizontal: 8,
+      marginVertical:10,
       width: '100%',
       borderColor: '#ddd',
       borderWidth: 1,
       backgroundColor: '#fff',
+      maxWidth:400,
+      alignSelf:'center'
     },
   });
   

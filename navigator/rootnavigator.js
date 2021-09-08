@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
+import FlashMessage from "react-native-flash-message";
 // x------------assets and components----------------x
 import AuthStackNavigator from './AuthNavigator';
 import DrawerNavigator from './DrawerNavigator';
@@ -18,6 +19,7 @@ const RootNavigator = () => {
           <AuthStackNavigator />
         )}
       </NavigationContainer>
+      <FlashMessage position="bottom" />
     </>
   );
 };

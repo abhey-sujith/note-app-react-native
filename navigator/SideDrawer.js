@@ -24,10 +24,10 @@ const SideDrawer = (props) => {
   return (
     <DrawerContentScrollView
       {...props}
-    //   style={{ backgroundColor: colors.background }}
+      style={{ backgroundColor: '#252525' }}
     > 
       <View 
-    //   style={styles.preference}
+      style={{padding:10,paddingTop:20}}
       >
         <TouchableOpacity
           onPress={async () => {
@@ -40,7 +40,7 @@ const SideDrawer = (props) => {
           }}
         >
           <Text 
-        //   style={[styles.SignoutText, { color: colors.textalpha }]}
+          style={[styles.SignoutText, { color: '#ffffff' }]}
           >
             Signout
           </Text>
@@ -52,13 +52,6 @@ const SideDrawer = (props) => {
 
 export default SideDrawer;
 
-// const styles = StyleSheet.create({
-//   preference: {
-//     flexDirection: 'row',
-//     justifyContent: 'space-between',
-//     paddingVertical: 12,
-//     paddingHorizontal: 16,
-//   },
-//   DarkThemeText: { fontSize: 18, fontFamily: 'OpenSans-Regular' },
-//   SignoutText: { fontSize: 18, fontFamily: 'OpenSans-Regular' },
-// });
+const styles = StyleSheet.create({
+  SignoutText: { fontSize: 18 },
+});
