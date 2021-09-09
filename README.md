@@ -111,7 +111,20 @@ laravel :- https://github.com/abhey-sujith/note-app-laravel-api
 <!-- ROADMAP -->
 ## Roadmap
 
+✅ Setup project
+✅ Create auth route
+✅ Register
+✅ Login
+✅ Logout
+✅ Create notes crud
+✅ Get notes
+✅ Create note
+✅ Edit note
+✅ Delete note
 
+Improvements
+
+☑️ Could add a feature to save images / voice . 
 
 <!-- LICENSE -->
 ## License
