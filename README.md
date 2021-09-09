@@ -142,8 +142,11 @@ laravel :- https://github.com/abhey-sujith/note-app-laravel-api
 ✅ Test the apk
 
 Improvements
+
 ☑️ Add toggle to switch to light mode
-☑️ add immage save functionality
+
+☑️ add image save functionality
+
 
 <!-- LICENSE -->
 ## License
