@@ -45,9 +45,9 @@ export const displayNote = ({ navigation, route }) => {
   }, [navigation]);
 
     return <SafeAreaView style={styles.container}>
-      <Text style={{fontSize:42,color:'#ffffff',fontWeight:'bold',paddingBottom:10,alignSelf:'center'}}>{title}</Text>
-      <Text style={{fontSize:24,color:'grey',paddingBottom:10,alignSelf:'center'}}>{ moment(updatedtime).format('DD-MM-YYYY')}</Text>
-      <Text style={{fontSize:24,color:'#ffffff'}}>{description}</Text>
+      <Text style={{ fontFamily:'MontserratBold',fontSize:42,color:'#ffffff',fontWeight:'bold',paddingBottom:10,alignSelf:'center'}}>{title}</Text>
+      <Text style={{fontFamily:'MontserratLight',fontSize:24,color:'grey',paddingBottom:10,alignSelf:'center'}}>{ moment(updatedtime).format('DD-MM-YYYY')}</Text>
+      <Text style={{fontFamily:'MontserratRegular',fontSize:24,color:'#ffffff'}}>{description}</Text>
   </SafeAreaView>;
   };
 

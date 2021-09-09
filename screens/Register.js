@@ -14,7 +14,7 @@ export const Register = ({ navigation }) => {
     const dispatch = useDispatch()
     return (
         <View style={styles.container}>
-        <Text style={styles.title}>Register</Text>
+        <Text style={[styles.title,{fontFamily:'MontserratBold'}]}>Register</Text>
         <Formik
           initialValues={{ name: '', email: '', password: '', password_confirmation: '' }}
           validationSchema={Yup.object({
@@ -76,7 +76,7 @@ export const Register = ({ navigation }) => {
                 value={props.values.name}
                 // autoFocus
                 placeholder="Your Name"
-                style={styles.input}
+                style={[styles.input,{fontFamily:'MontserratRegular'}]}
                 onSubmitEditing={() => {
                   // on certain forms, it is nice to move the user's focus
                   // to the next input when they press enter.
@@ -91,7 +91,7 @@ export const Register = ({ navigation }) => {
                 onBlur={props.handleBlur('email')}
                 value={props.values.email}
                 placeholder="Email Address"
-                style={styles.input}
+                style={[styles.input,{fontFamily:'MontserratRegular'}]}
                 // ref={el => this.emailInput = el}
               />
               {props.touched.email && props.errors.email ? (
@@ -104,7 +104,7 @@ export const Register = ({ navigation }) => {
                 value={props.values.password}
                 // autoFocus
                 placeholder="Password"
-                style={styles.input}
+                style={[styles.input,{fontFamily:'MontserratRegular'}]}
                 onSubmitEditing={() => {
                   // on certain forms, it is nice to move the user's focus
                   // to the next input when they press enter.
@@ -121,7 +121,7 @@ export const Register = ({ navigation }) => {
                 value={props.values.password_confirmation}
                 autoFocus
                 placeholder="Confirm Password"
-                style={styles.input}
+                style={[styles.input,{fontFamily:'MontserratRegular'}]}
                 onSubmitEditing={() => {
                   // on certain forms, it is nice to move the user's focus
                   // to the next input when they press enter.
@@ -138,7 +138,7 @@ export const Register = ({ navigation }) => {
                 mode="contained"
                 loading={props.isSubmitting}
                 disabled={props.isSubmitting}
-                style={{ marginTop: 16 }}>
+                style={{ marginTop: 16 ,fontFamily:'MontserratRegular'}}>
                 Submit
               </Button>
               <Button
@@ -146,7 +146,7 @@ export const Register = ({ navigation }) => {
                 color="#81deeb"
                 mode="outlined"
                 disabled={props.isSubmitting}
-                style={{ marginTop: 16 }}>
+                style={{ marginTop: 16 ,fontFamily:'MontserratRegular' }}>
                 Reset
               </Button>
             </View>
@@ -157,7 +157,7 @@ export const Register = ({ navigation }) => {
                 onPress={()=>{navigation.navigate('Login')}}
                 color="#fecd80"
                 // mode="contained"
-                style={{ marginTop: 30 }}>
+                style={{ marginTop: 30  ,fontFamily:'MontserratRegular'}}>
                 Already a User? Login...
         </Button>
 
@@ -175,9 +175,9 @@ export const Register = ({ navigation }) => {
     title: {
       margin: 24,
       fontSize: 20,
-      fontWeight: 'bold',
+      // fontWeight: 'bold',
       textAlign: 'center',
-      color:'#ffffff'
+      color:'#ffffff',
     },
     error: {
       margin: 8,

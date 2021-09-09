@@ -59,7 +59,7 @@ export const Login = ({ navigation }) => {
                 onBlur={props.handleBlur('email')}
                 value={props.values.email}
                 placeholder="Email Address"
-                style={styles.input}
+                style={[styles.input,{fontFamily:'MontserratRegular'}]}
                 // ref={el => this.emailInput = el}
               />
               {props.touched.email && props.errors.email ? (
@@ -72,7 +72,7 @@ export const Login = ({ navigation }) => {
                 value={props.values.password}
                 // autoFocus
                 placeholder="Password"
-                style={styles.input}
+                style={[styles.input,{fontFamily:'MontserratRegular'}]}
                 onSubmitEditing={() => {
                   // on certain forms, it is nice to move the user's focus
                   // to the next input when they press enter.

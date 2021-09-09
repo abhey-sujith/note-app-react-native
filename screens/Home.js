@@ -8,7 +8,7 @@ import { getNotesAsync,emptythenotesdataarray } from '../store/slices/note/notes
 const Item = ({ item, onPress, backgroundColor='#ffffff', textColor='#000000' }) => (
   <View style={{backgroundColor,flex:1,margin:10}}>
   <TouchableOpacity onPress={onPress} style={[styles.item]}>
-    <Text style={[styles.title, textColor]}>{item.title}</Text>
+    <Text style={[styles.title, textColor,{fontFamily:'MontserratSemiBold'}]}>{item.title}</Text>
   </TouchableOpacity>
   </View>
 );

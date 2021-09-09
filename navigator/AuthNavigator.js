@@ -15,7 +15,8 @@ const AuthStackNavigator = () => {
     headerTitleAlign:'center',
     headerTintColor: '#fff',
     headerTitleStyle: {
-      fontWeight: 'bold',
+    //   fontWeight: 'bold',
+      fontFamily:'MontserratBold'
     },
   }}
   >

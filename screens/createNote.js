@@ -65,7 +65,7 @@ export const createNote = ({ navigation }) => {
                 onBlur={props.handleBlur('title')}
                 value={props.values.title}
                 placeholder="Title"
-                style={styles.input}
+                style={[styles.input,{fontFamily:'MontserratRegular'}]}
                 // ref={el => this.emailInput = el}
               />
               {props.touched.title && props.errors.title ? (
@@ -79,7 +79,7 @@ export const createNote = ({ navigation }) => {
                 // autoFocus
                 multiline
                 placeholder="Description"
-                style={styles.inputdescription}
+                style={[styles.inputdescription,{fontFamily:'MontserratRegular'}]}
                 onSubmitEditing={() => {
                   // on certain forms, it is nice to move the user's focus
                   // to the next input when they press enter.
