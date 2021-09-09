@@ -27,7 +27,7 @@ export const displayNote = ({ navigation, route }) => {
                   backgroundColor: "green", // background color
                   color: "#ffffff", // text color
                 });
-                navigation.navigate('Home')
+                navigation.navigate('Home',{createdNewNote:true})
               })
               .catch((rejectedValueOrSerializedError) => {
                 console.log('rejectedValueOrSerializedError',rejectedValueOrSerializedError);
