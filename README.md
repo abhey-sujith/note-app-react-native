@@ -111,20 +111,39 @@ laravel :- https://github.com/abhey-sujith/note-app-laravel-api
 <!-- ROADMAP -->
 ## Roadmap
 
-✅ Setup project
-✅ Create auth route
+✅ Setup Project
+
+✅ Setup Navigator
+
+✅ Setup Redux
+
+✅ Setup Redux-persist
+
+✅ Create Screens
+
 ✅ Register
+
 ✅ Login
-✅ Logout
-✅ Create notes crud
-✅ Get notes
-✅ Create note
+
+✅ Home
+
+✅ Drawer
+
+✅ Display note
+
 ✅ Edit note
+
 ✅ Delete note
 
-Improvements
+✅ Create and add icon and splash screen
 
-☑️ Could add a feature to save images / voice . 
+✅ Make the apk
+
+✅ Test the apk
+
+Improvements
+☑️ Add toggle to switch to light mode
+☑️ add immage save functionality
 
 <!-- LICENSE -->
 ## License
