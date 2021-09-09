@@ -39,7 +39,7 @@ export const createNote = ({ navigation }) => {
                   backgroundColor: "green", // background color
                   color: "#ffffff", // text color
                 });
-                navigation.pop()
+                navigation.navigate('Home',{createdNewNote:true})
               })
               .catch((rejectedValueOrSerializedError) => {
                 formikActions.setSubmitting(false);

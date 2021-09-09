@@ -6,9 +6,9 @@ import { Entypo } from '@expo/vector-icons';
 import { getNotesAsync,emptythenotesdataarray } from '../store/slices/note/noteslice'
 
 const Item = ({ item, onPress, backgroundColor='#ffffff', textColor='#000000' }) => (
-  <View style={{backgroundColor,flex:1,margin:10}}>
+  <View style={{backgroundColor,flex:1,margin:10,maxHeight:300,}}>
   <TouchableOpacity onPress={onPress} style={[styles.item]}>
-    <Text style={[styles.title, textColor,{fontFamily:'MontserratSemiBold'}]}>{item.title}</Text>
+    <Text numberOfLines={6} ellipsizeMode='tail' style={[styles.title, textColor,{fontFamily:'MontserratSemiBold',}]}>{item.title}</Text>
   </TouchableOpacity>
   </View>
 );
@@ -42,7 +42,9 @@ export const Home = ({ navigation, route }) => {
   const current_page = useSelector((state) => state.note.current_page)
   const last_page = useSelector((state) => state.note.last_page)
   const dispatch = useDispatch()
+  const params = route.params;
 
+ 
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
@@ -59,6 +61,13 @@ export const Home = ({ navigation, route }) => {
   useEffect(()=>{
     dispatch(getNotesAsync({token:token,pagenumber:1}));
   },[])
+
+  useEffect(()=>{
+    if(params?.createdNewNote){
+      dispatch(emptythenotesdataarray())
+      dispatch(getNotesAsync({token,pagenumber:1}));
+    }
+  },[params])
 
 
   const renderItem = ({ item }) => {

@@ -42,7 +42,7 @@ export const editNote = ({ navigation, route  }) => {
                   backgroundColor: "green", // background color
                   color: "#ffffff", // text color
                 });
-                navigation.navigate('Home')
+                navigation.navigate('Home',{createdNewNote:true})
               })
               .catch((rejectedValueOrSerializedError) => {
                 formikActions.setSubmitting(false);
