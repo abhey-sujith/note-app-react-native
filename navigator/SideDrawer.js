@@ -1,7 +1,7 @@
 /* eslint-disable object-curly-newline */
 /* eslint-disable react/jsx-props-no-spreading */
 import * as React from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
 import { StyleSheet, View, Text, Switch, TouchableOpacity } from 'react-native';
 import {
   DrawerContentScrollView,
@@ -21,6 +21,8 @@ import { persistor } from '../store';
 
 const SideDrawer = (props) => {
     const dispatch = useDispatch();
+    const email = useSelector((state) => state.auth.email)
+    const name = useSelector((state) => state.auth.name)
   return (
     <DrawerContentScrollView
       {...props}
@@ -29,6 +31,8 @@ const SideDrawer = (props) => {
       <View 
       style={{padding:10,paddingTop:20}}
       >
+        <Text style={{padding:10,color:'white'}}>{name}</Text>
+        <Text style={{padding:10,color:'white'}}>{email}</Text>
         <TouchableOpacity
           onPress={async () => {
             await AsyncStorage.setItem('persist:auth', '');
@@ -53,5 +57,5 @@ const SideDrawer = (props) => {
 export default SideDrawer;
 
 const styles = StyleSheet.create({
-  SignoutText: { fontSize: 18 },
+  SignoutText: { fontSize: 18,padding:10 },
 });
